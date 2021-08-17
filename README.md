@@ -34,11 +34,24 @@ Now, your browser should open to the page `https://localhost:5001/WebHook`, and 
 
 # Building + Deploying Your Application
 
-TODO: Write these steps.
-
 This application must be deployed to a web server. You must have a web server configured for this work properly. The setup and configuration of a web server is beyond the scope of this article. If you would like additional information or support on this, please contact B&L Information Systems.
 
-After you have identified your webserver.............................................For example, if my webserver is accessible via webserver.company.com, I would deploy this application to the folder 'WebHookAPI', and the URL to my webhook application would be `https://webserver.company.com/WebHookAPI/WebHook`.
+**Note** This application must be deployed to a Web Server that is accessible from Odyssey's App Server. If you are a B&L Cloud Customer and your web server is behind a firewall, you can add B&L's IP Addresses to your allow-lists to enable B&L's cloud to access your API. Please contact B&L's Technology Department for the list of these IP Addresses.
+
+We have included steps for hosting the application in Windows on IIS, but you can also host this application on MacOS or Linux. Consult Microsoft's documentation for steps for those platforms.
+## Steps for IIS
+1. You must install the [.NET Core Hosting Bundle](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-aspnetcore-6.0.0-preview.7-windows-hosting-bundle-installer).
+2. On your webserver, create a folder within the website you are deploying to
+3. Create a new application pool in IIS. Use the `No Managed Code` .NET CLR Version
+4. Right-click your new folder and 'Convert to Application' - choose the application pool your just created
+5. In PowerShell, in your application folder, run `dotnet publish --configuration Release`
+6. Copy the contents of `bin\Release\net6.0\publish` to the folder you created on your webserver
+7. To test the deploy, navigate to the application in your web browser.
+    -  For example, if I created a `WebHookApp` folder on my web server, and
+    -  My web server is located at `mycompany.com`, then the URL I would navigate to is
+    -  `https://mycompany.com/WebHookApp/WebHook`
+    -  If you see the "The WebHook application is functioning." text here, you know you have deployed your application properly.
+    -  Now, a POST to `https://mycompany.com/WebHookApp/WebHook` will process whatever code is written in your WebHookController.cs file.
 
 # Writing Your Own Code
 
