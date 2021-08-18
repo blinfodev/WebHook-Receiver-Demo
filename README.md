@@ -36,6 +36,48 @@ code .
 
 Now, your browser should open. Navigate to the page `https://localhost:5001/WebHook`, and you should see the text "The WebHook application is functioning.". If you see this text, you know the application is running and functioning properly. When running locally, you can test the WebHook using any tool that supports making POST requests. Our recommended tool is [Postman](https://www.postman.com/downloads/). Postman is a free tool you can use to test API requests.
 
+# How does the Odyssey WebHook System work?
+
+After you define your WebHook URL and your WebHook Token, you can choose tables for webhooks to be fired on. An HTTP POST request is sent to your WebHook URL, and the WebHook Token is sent in an `X-Token` HTTP Header.
+
+To use the webhook, you must have an application listening for a POST request to that URL. Additionally, that application should verify that the `X-Token` is present an correct to prevent unexpected or unauthorized use.
+
+Webhooks can be fired for changes to Master Table data, such as Products. To enable a Product webhook, you would first go into System Configuration and define your WebHook URL and token. Then, you would navigate to the Table List within Odyssey and enable webhooks for Products. After that, when a user changes a Product master record, the webhook will be called. The information that will be sent to your WebHook URL is as follows:
+
+```json
+// POST: <your webhook URL>
+// X-Token: <your webhook Token>
+{
+	// The ID of the User that caused this webhook to occur.
+	"userID": "",
+
+	// The company in which this webhook occurred.
+	"companyID": "",
+
+	// The source of the webhook. This is typically a database table name,
+	// may also refer to other sources in Odyssey, such as a production transaction.
+	"source": "",
+
+	// The action that was performed to cause this webhook. Example values are:
+	// 'ADD' to denote a new record, 'CHANGE' to denote an update, and 'DELETE' to denote record removal.
+	"action": "",
+
+	// An array of objects. If applicable, this array contains all the records that existed
+	// before the change. For example, if a Product is being updated, this would contain a
+	// single object that represents the Product before the change.
+	"previousData": [
+		{ }
+	],
+
+	// An array of objects. If applicable, this array contains all the records that existed
+	// after the change. For example, if a Product is being updated, this would contain a
+	// single object that represents the Product after the change.
+	"Data": [
+		{ }
+	]
+}
+```
+
 # Building + Deploying Your Application
 
 This application must be deployed to a web server. You must have a web server configured for this work properly. The setup and configuration of a web server is beyond the scope of this article. If you would like additional information or support on this, please contact B&L Information Systems.
