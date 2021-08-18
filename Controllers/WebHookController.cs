@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebHookReceiver.Models;
 using Microsoft.Extensions.Primitives;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace WebHookReceiver.Controllers
 {
@@ -43,7 +43,9 @@ namespace WebHookReceiver.Controllers
 			*********/
 			// This example code logs whatever data we received to a .json file where this application runs.
 			var guid = Guid.NewGuid();
-			System.IO.File.WriteAllText($"DebugWebHook-{guid}.json", JsonConvert.SerializeObject(webhookData, Formatting.Indented));
+			var options = new JsonSerializerOptions();
+			options.WriteIndented = true;
+			System.IO.File.WriteAllText($"DebugWebHook-{guid}.json", JsonSerializer.Serialize(webhookData, options));
 
 			return webhookData;
 			// This demo application returns the values that were passed to it.
