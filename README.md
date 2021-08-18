@@ -1,21 +1,25 @@
-# WebHook Receiver
+# WebHook Receiver Demo
 
-A free demo application for learning and using the Odyssey WebHook system.
+This free source code can be used to learn the Odyssey WebHook system. Out of the box, this application will log all webhook requests. This could be helpful to you if you're just starting out with the webhook system, and wish to set it up on your web server.
+
+Additionally, you can modify this source code to fulfill your needs, and run this in production.
+
+There are many different coding languages and application platforms that would support the Odyssey WebHook system. This is because Odyssey will initiate a HTTP POST Request to a URL of your choosing. While this demo is written in C# using .NET5, you can also write programs in languages like NodeJS, Python, Java, and many others.
 
 # Target Audience
 
-This information is intended for Odyssey administrators or developers who wish to understand how to use the Odyssey WebHook system.
+This information is intended for tech-savvy Odyssey administrators or developers who wish to understand how to use the Odyssey WebHook system.
 
 # Getting Started
 
-This is a .NET Core application that can be hosted on a Windows or Linux server. This application is a simple REST API with only one method for accepting a POST request from an Odyssey webhook.
+This is a .NET Core application that can be developed and hosted on a Windows or Linux system. This application is a simple REST API with a method for accepting a POST request from an Odyssey webhook.
 
 .NET Core (.NET 5) is a completely free, cross-platform tool that can be run on Windows, MacOS, and Linux. In order to use and build this project, you must first install the following free tools.
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/download)
 2. Install [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 3. Install the [.NET 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
-4. Install [git](https://git-scm.com/downloads)
+4. Install the [git](https://git-scm.com/downloads) source control tool
 
 After install all these tools, download and run this project.
 
@@ -30,7 +34,7 @@ code .
 ```
 5. Press CTRL/CMD + F5 in Visual Studio Code to run the project
 
-Now, your browser should open to the page `https://localhost:5001/WebHook`, and you should see the text "The WebHook application is functioning.". If you see this text, you know the application is running and functioning properly. When running locally, you can test the WebHook using any tool that supports making POST requests. Our recommended tool is [Postman](https://www.postman.com/downloads/). Postman is a free tool you can use to test API requests.
+Now, your browser should open. Navigate to the page `https://localhost:5001/WebHook`, and you should see the text "The WebHook application is functioning.". If you see this text, you know the application is running and functioning properly. When running locally, you can test the WebHook using any tool that supports making POST requests. Our recommended tool is [Postman](https://www.postman.com/downloads/). Postman is a free tool you can use to test API requests.
 
 # Building + Deploying Your Application
 
