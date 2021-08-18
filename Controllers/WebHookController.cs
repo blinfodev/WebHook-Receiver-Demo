@@ -31,7 +31,7 @@ namespace WebHookReceiver.Controllers
 			// that matches our pre-defined AccessToken. Doing this secures our
 			// API to make sure that rogue requests aren't accepted.
 			Request.Headers.TryGetValue("X-Token", out StringValues value);
-			if (value.First() != this.AccessToken) return Unauthorized();
+			if (!value.Any() || value.First() != this.AccessToken) return Unauthorized();
 
 			// Make sure a valid object was passed to the API.
 			if (webhookData == null) return BadRequest();
