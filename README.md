@@ -24,7 +24,7 @@ This is a .NET Core application that can be developed and hosted on a Windows or
 After install all these tools, download and run this project.
 
 1. Open a PowerShell window in the location where you want this project to exist
-2. Run `git clone XXX` to clone this repository and download it to your computer
+2. Run `git clone https://github.com/blinfodev/WebHook-Receiver-Demo.git` to clone this repository and download it to your computer
 3. Run `dotnet dev-certs https --trust` to enable you to run the application locally via HTTPS.
     -  Select Yes if you agree to trust the development certificate.
 4. Open the `webhook-receiver` directory in Visual Studio Code
